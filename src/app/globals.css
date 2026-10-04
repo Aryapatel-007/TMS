@@ -1,1 +1,198 @@
 @import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens (CLAUDE.md section 6)                                */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --color-night-walnut: #1a120e;
+  --color-night-deep: #241813;
+  --color-candle-cream: #efe2d3;
+  --color-smoke: #b8a493;
+  --color-copper: #a8704f;
+  --color-copper-glow: #c99572;
+  --color-copper-glow-bright: #d8ab8a;
+  --color-parchment: #e8d8c4;
+  --color-ink-terracotta: #6e4532;
+  --color-ink-espresso: #3a2a22;
+  --color-velvet-red: #8e2b28;
+  --color-velvet-navy: #0b1a36;
+
+  /* Type scale, ratio 1.333. The root is 17px on mobile and 18px on desktop. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 1rem;
+  --text-base--line-height: 1.65;
+  --text-lg: 1.333rem;
+  --text-lg--line-height: 1.35;
+  --text-xl: 1.777rem;
+  --text-xl--line-height: 1.15;
+  --text-2xl: 2.369rem;
+  --text-2xl--line-height: 1.1;
+  --text-3xl: 3.157rem;
+  --text-3xl--line-height: 1.05;
+  --text-4xl: 4.209rem;
+  --text-4xl--line-height: 1.05;
+  --text-hero: clamp(3.5rem, 11vw, 9rem);
+  --text-hero--line-height: 1;
+
+  --container-content: 1200px;
+  --container-prose: 65ch;
+
+  --ease-candle: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-deva: var(--font-tiro), "Tiro Devanagari Hindi", serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Section themes. Components read these variables, so the same       */
+/* button or link works on night, parchment and navy.                 */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  .theme-night,
+  :root {
+    --bg: var(--color-night-walnut);
+    --fg: var(--color-candle-cream);
+    --fg-muted: var(--color-smoke);
+    --heading: var(--color-candle-cream);
+    --link: var(--color-copper-glow);
+    --line: var(--color-copper);
+    --btn-bg: var(--color-copper-glow);
+    --btn-bg-hover: var(--color-copper-glow-bright);
+    --btn-fg: var(--color-night-walnut);
+    --btn2-line: var(--color-copper);
+    --btn2-line-hover: var(--color-copper-glow);
+    --btn2-fg: var(--color-candle-cream);
+    --focus: var(--color-copper-glow);
+  }
+
+  .theme-navy {
+    --bg: var(--color-velvet-navy);
+  }
+
+  .theme-parchment {
+    --bg: var(--color-parchment);
+    --fg: var(--color-ink-espresso);
+    --fg-muted: var(--color-ink-terracotta);
+    --heading: var(--color-ink-terracotta);
+    --link: var(--color-ink-terracotta);
+    --line: var(--color-copper);
+    --btn-bg: var(--color-ink-terracotta);
+    --btn-bg-hover: var(--color-ink-espresso);
+    --btn-fg: var(--color-parchment);
+    --btn2-line: var(--color-ink-terracotta);
+    --btn2-line-hover: var(--color-ink-espresso);
+    --btn2-fg: var(--color-ink-espresso);
+    /* copper-glow is too faint on parchment, so focus uses the ink colour */
+    --focus: var(--color-ink-terracotta);
+  }
+
+  html {
+    font-size: 106.25%; /* 17px */
+    background-color: var(--color-night-walnut);
+    color: var(--color-candle-cream);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 4.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    html {
+      font-size: 112.5%; /* 18px */
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.65;
+    background-color: var(--color-night-walnut);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-copper);
+    color: var(--color-night-walnut);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Parchment grain: a tiny inline SVG noise at low opacity            */
+/* ------------------------------------------------------------------ */
+
+@utility paper-grain {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.43 0 0 0 0 0.27 0 0 0 0 0.2 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Vertical rhythm between sections: 96px on mobile, 160px on desktop */
+@utility py-section {
+  padding-block: 96px;
+
+  @media (min-width: 64rem) {
+    padding-block: 160px;
+  }
+}
+
+/* Arch-topped frame: rounded top, square bottom */
+@utility arch {
+  border-radius: 100vmax 100vmax 0 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: show every final state instantly                   */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
