@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LazyMotion, MotionConfig, domAnimation, m } from "motion/react";
 import { useEffect, useState } from "react";
 import { whatsappMessages } from "@/content/site";
 import { track } from "@/lib/track";
@@ -44,24 +44,28 @@ export function FloatingWhatsApp() {
   const show = pastHero && !atVisit;
 
   return (
-    <AnimatePresence>
-      {show ? (
-        <motion.a
-          key="whatsapp"
-          href={greetingLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={whatsappMessages.floatingLabel}
-          onClick={() => track("whatsapp_float_click")}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.85 }}
-          transition={{ duration: 0.25, ease: [0.22, 0.61, 0.36, 1] }}
-          className="fixed right-4 bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] z-40 inline-flex size-14 items-center justify-center rounded-full bg-copper-glow text-night-walnut shadow-[0_10px_30px_-8px_rgb(0_0_0/0.6)] lg:hidden"
-        >
-          <WhatsAppIcon className="size-7" />
-        </motion.a>
-      ) : null}
-    </AnimatePresence>
+    <LazyMotion features={domAnimation}>
+      <MotionConfig reducedMotion="user">
+        <AnimatePresence>
+          {show ? (
+            <m.a
+              key="whatsapp"
+              href={greetingLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={whatsappMessages.floatingLabel}
+              onClick={() => track("whatsapp_float_click")}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.85 }}
+              transition={{ duration: 0.25, ease: [0.22, 0.61, 0.36, 1] }}
+              className="fixed right-4 bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] z-40 inline-flex size-14 items-center justify-center rounded-full bg-copper-glow text-night-walnut shadow-[0_10px_30px_-8px_rgb(0_0_0/0.6)] lg:hidden"
+            >
+              <WhatsAppIcon className="size-7" />
+            </m.a>
+          ) : null}
+        </AnimatePresence>
+      </MotionConfig>
+    </LazyMotion>
   );
 }

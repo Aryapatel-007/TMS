@@ -103,6 +103,8 @@ export const business = {
   // TODO_OWNER: confirm the rating.
   rating: "Rated 4.5 by our guests",
   cuisines: ["Indian", "Asian", "Continental", "Vegetarian"],
+  // TODO_OWNER: confirm the price band shown to search engines (₹₹₹ means mid to high).
+  priceRange: "₹₹₹",
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -299,7 +301,7 @@ export const nav = {
     { label: "Visit", href: "#visit" },
   ],
   cta: { label: "Plan an event", href: "#visit" },
-  homeLabel: "The Masala Secrets, back to top",
+  homeLabel: "TMS, The Masala Secrets, back to top",
   openMenu: "Open menu",
   closeMenu: "Close menu",
   menuTitle: "Menu",

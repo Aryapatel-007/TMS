@@ -26,7 +26,6 @@ export function Kitchen() {
               >
                 {group.title}
               </h3>
-              <span aria-hidden="true" className="mx-auto mt-4 block h-px w-14 bg-copper" />
 
               <div className="mt-10 grid items-center gap-12 md:grid-cols-2 lg:mt-14 lg:gap-20">
                 <div className={clsx("flex flex-col items-center text-center", flip && "md:order-2")}>

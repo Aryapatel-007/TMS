@@ -380,6 +380,21 @@ Message: {message, or "None"}
 
 ---
 
-## 11. Next.js version notes
+## 11. Implementation notes (decisions made while building)
+
+- **Photos are half size.** The 31 screenshots arrived through WhatsApp at 590 x 1280 instead of 1189 x 2576. The crop boxes are proportional, so the originals can be dropped into `assets/raw/` with the same names and `python scripts/crop_assets.py` re-run. `1000133652.jpg` (a red curtain dining room with the word "Inside") is not in the asset map and is unused.
+- **Hero sequence runs in CSS**, not motion. An inline script in `<head>` (`src/lib/intro.ts`) sets `html[data-intro="play"]` before first paint, and keyframes in `globals.css` do the rest. It starts on first paint instead of waiting for JavaScript. motion is used for the mobile menu and the floating WhatsApp button, through `LazyMotion` to keep the bundle small.
+- **Mark geometry:** the reference has 20 spikes, not 24. The paths live in `src/components/brand/mark-paths.ts`, shared by `Mark.tsx` and the Open Graph image. `node scripts/make-icons.mjs` rebuilds the app icons from `public/brand/tms-mark.svg`.
+- **Lockup circumflex:** Cormorant's own ê has a tall, sharp accent, so `Lockup.tsx` draws a small soft one over a plain "e".
+- **Chef photos swapped:** the hat portrait only exists as a landscape crop (the original post has lettering across his chest), so `chef-arpit-at-work` fills the tall frame and the portrait overlaps it on desktop.
+- **Gallery height** is 290px, the native height of the chandelier photo, so no photo is shown larger than its source. Raise it when the originals arrive.
+- **Space capacities** stay hidden until `capacity` is set in `site.ts`, so "XX guests" never shows on the live site.
+- **The enquiry form sits on a parchment panel** so velvet red errors and focus rings meet contrast (velvet red on night-walnut is only 2.2:1).
+- **Devanagari font** is a 4 KB subset with only the letters of मसाला (`assets/fonts/tiro-devanagari-400.woff`). If the lockup text changes, download a new subset (see the comment in `layout.tsx`).
+- **Review screenshots:** `node scripts/shoot.mjs <folder> <path> [options]` against a running server (`npx next start -p 3100`). In Git Bash, set `MSYS_NO_PATHCONV=1` so `/` paths are not rewritten.
+
+---
+
+## 12. Next.js version notes
 
 @AGENTS.md

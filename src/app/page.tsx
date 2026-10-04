@@ -1,3 +1,4 @@
+import { RestaurantJsonLd } from "@/components/RestaurantJsonLd";
 import { Booking } from "@/components/sections/Booking";
 import { Celebrations } from "@/components/sections/Celebrations";
 import { Chef } from "@/components/sections/Chef";
@@ -27,6 +28,7 @@ export default function Home() {
   const hasReviews = reviews.length > 0;
   return (
     <>
+      <RestaurantJsonLd />
       <Header />
       <main>
         <Hero />

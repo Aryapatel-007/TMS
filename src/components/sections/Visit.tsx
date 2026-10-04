@@ -11,7 +11,7 @@ export function Visit() {
         {visit.heading}
       </SectionHeading>
 
-      <div className="mt-14 grid gap-14 lg:mt-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+      <div className="mt-14 grid gap-14 lg:mt-20 xl:grid-cols-[1.15fr_1fr] xl:gap-16">
         <EnquiryForm />
 
         <div className="space-y-14">

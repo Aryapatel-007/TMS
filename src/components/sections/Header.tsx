@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LazyMotion, MotionConfig, domAnimation, m } from "motion/react";
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
@@ -33,9 +33,7 @@ export function Header() {
     root.style.overflow = "hidden";
 
     const focusables = () =>
-      Array.from(
-        panelRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [],
-      );
+      Array.from(panelRef.current?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []);
     focusables()[0]?.focus();
 
     const onKey = (e: KeyboardEvent) => {
@@ -132,87 +130,98 @@ export function Header() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            ref={panelRef}
-            id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
-            aria-label={nav.menuTitle}
-            className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-night-deep lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-          >
-            <div className="flex h-16 shrink-0 items-center justify-between px-5 sm:px-8">
-              <a
-                href="#top"
-                aria-label={nav.homeLabel}
-                onClick={onPanelLink}
-                className="rounded-[2px] text-candle-cream"
+      <LazyMotion features={domAnimation}>
+        <MotionConfig reducedMotion="user">
+          <AnimatePresence>
+            {open ? (
+              <m.div
+                ref={panelRef}
+                id="mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                aria-label={nav.menuTitle}
+                className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-night-deep lg:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
               >
-                <Logo variant="horizontal" label={null} className="[&_svg]:text-copper-glow" />
-              </a>
-              <button
-                type="button"
-                className="-mr-2 inline-flex size-11 items-center justify-center rounded-[2px] text-candle-cream"
-                aria-label={nav.closeMenu}
-                onClick={close}
-              >
-                <CloseIcon />
-              </button>
-            </div>
+                <div className="flex h-16 shrink-0 items-center justify-between px-5 sm:px-8">
+                  <a
+                    href="#top"
+                    aria-label={nav.homeLabel}
+                    onClick={onPanelLink}
+                    className="rounded-[2px] text-candle-cream"
+                  >
+                    <Logo variant="horizontal" label={null} className="[&_svg]:text-copper-glow" />
+                  </a>
+                  <button
+                    type="button"
+                    className="-mr-2 inline-flex size-11 items-center justify-center rounded-[2px] text-candle-cream"
+                    aria-label={nav.closeMenu}
+                    onClick={close}
+                  >
+                    <CloseIcon />
+                  </button>
+                </div>
 
-            <motion.nav
-              aria-label="Main"
-              className="flex flex-1 flex-col justify-center px-8 pb-10"
-              initial={{ y: 16 }}
-              animate={{ y: 0 }}
-              exit={{ y: 8 }}
-              transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
-            >
-              <ul className="space-y-1">
-                {nav.links.map((link) => (
-                  <li key={link.href}>
+                <m.nav
+                  aria-label="Main"
+                  className="flex flex-1 flex-col justify-center px-8 pb-10"
+                  initial={{ y: 16 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: 8 }}
+                  transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+                >
+                  <ul className="space-y-1">
+                    {nav.links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          onClick={onPanelLink}
+                          className="block rounded-[2px] py-1.5 font-display text-[2.5rem] leading-tight text-candle-cream transition-colors hover:text-copper-glow"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-10 space-y-2 border-t border-copper/40 pt-8">
                     <a
-                      href={link.href}
-                      onClick={onPanelLink}
-                      className="block rounded-[2px] py-1.5 font-display text-[2.5rem] leading-tight text-candle-cream transition-colors hover:text-copper-glow"
+                      href={business.phones[0].href}
+                      className="block w-fit rounded-[2px] text-lg text-candle-cream hover:text-copper-glow"
                     >
-                      {link.label}
+                      {business.phones[0].display}
                     </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-10 space-y-2 border-t border-copper/40 pt-8">
-                <a
-                  href={business.phones[0].href}
-                  className="block w-fit rounded-[2px] text-lg text-candle-cream hover:text-copper-glow"
-                >
-                  {business.phones[0].display}
-                </a>
-                <a
-                  href={business.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-fit rounded-[2px] text-copper-glow hover:text-copper-glow-bright"
-                >
-                  {business.instagram.handle}
-                </a>
-              </div>
-            </motion.nav>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+                    <a
+                      href={business.instagram.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-fit rounded-[2px] text-copper-glow hover:text-copper-glow-bright"
+                    >
+                      {business.instagram.handle}
+                    </a>
+                  </div>
+                </m.nav>
+              </m.div>
+            ) : null}
+          </AnimatePresence>
+        </MotionConfig>
+      </LazyMotion>
     </header>
   );
 }
 
 function MenuIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="size-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
       <path d="M3 8.5h18M3 15.5h18" />
     </svg>
   );
@@ -220,7 +229,14 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="size-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
       <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" />
     </svg>
   );

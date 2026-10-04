@@ -55,7 +55,7 @@ export function Celebrations() {
 
       {/* Feast strip */}
       <div className="mt-24 lg:mt-32">
-        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-[7fr_5fr]">
+        <div className="mx-auto grid max-w-[57rem] gap-4 sm:grid-cols-[7fr_5fr]">
           <FoodPhoto image={feast} sizes="(min-width: 1024px) 590px, (min-width: 640px) 58vw, 100vw" />
           <FoodPhoto image={springRolls} sizes="(min-width: 1024px) 420px, (min-width: 640px) 42vw, 100vw" />
         </div>

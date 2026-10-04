@@ -377,7 +377,7 @@ export function EnquiryForm() {
       </div>
 
       <div className="mt-8 space-y-4">
-        <Button type="submit" className="min-h-13 w-full gap-3 sm:w-auto">
+        <Button type="submit" className="min-h-13 w-full gap-2.5 px-4 sm:w-auto sm:px-6">
           <WhatsAppIcon className="size-5" />
           {copy.submit}
         </Button>
@@ -386,7 +386,7 @@ export function EnquiryForm() {
           <TrackedLink
             href={visit.callLine.href}
             event="call_click"
-            className="rounded-[2px] font-medium text-ink-terracotta underline decoration-ink-terracotta/50 underline-offset-4 hover:decoration-ink-terracotta"
+            className="rounded-[2px] font-medium whitespace-nowrap text-ink-terracotta underline decoration-ink-terracotta/50 underline-offset-4 hover:decoration-ink-terracotta"
           >
             {visit.callLine.label}
           </TrackedLink>

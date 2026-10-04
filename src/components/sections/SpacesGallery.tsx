@@ -6,11 +6,11 @@ import { ArchFrame } from "@/components/ui/ArchFrame";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { gallery } from "@/content/site";
 
-// All frames share one height. Kept modest so no photo is shown much larger than
-// its native size (the chandelier photo is 290px tall, the window photo 370px).
-// Raise it when the owner's original photos arrive.
-const FRAME_HEIGHT = "h-[300px] lg:h-[320px]";
-const MAX_FRAME_HEIGHT = 320;
+// All frames share one height, matched to the shortest photo (the chandelier is
+// 290px tall) so no photo is shown larger than its native size.
+// Raise it when the owner's original, full-size photos arrive.
+const FRAME_HEIGHT = "h-[290px]";
+const MAX_FRAME_HEIGHT = 290;
 
 export function SpacesGallery() {
   const scroller = useRef<HTMLDivElement>(null);
