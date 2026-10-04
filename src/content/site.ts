@@ -637,6 +637,7 @@ export const visit = {
   phoneLabel: "Phone",
   hoursLabel: "Hours",
   directions: { label: "Get directions" },
+  instagramSuffix: "on Instagram",
   callLine: { lead: "Prefer to talk?", label: "Call +91 90993 22446", href: business.phones[0].href },
 };
 
