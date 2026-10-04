@@ -84,6 +84,24 @@ for (const viewport of sizes) {
   await page.waitForTimeout(Number(opts.wait));
   const file = path.join(outDir, `${opts.name}-${viewport.width}.png`);
   if (opts.selector) {
+    // hide the fixed header, walk through the element so lazy images load, then wait for them
+    await page.addStyleTag({ content: "[data-site-header]{visibility:hidden!important}" });
+    await page.evaluate(async (sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      for (let y = top - 200; y < top + el.scrollHeight; y += 400) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 80));
+      }
+      const loaded = Promise.all(
+        [...el.querySelectorAll("img")].map((img) =>
+          img.complete ? null : new Promise((r) => img.addEventListener("load", r, { once: true })),
+        ),
+      );
+      await Promise.race([loaded, new Promise((r) => setTimeout(r, 5000))]);
+    }, opts.selector);
+    await page.waitForTimeout(300);
     await page.locator(opts.selector).first().screenshot({ path: file });
   } else {
     await page.screenshot({ path: file, fullPage: Boolean(opts.full) });

@@ -372,7 +372,6 @@ export const celebrations = {
       description: "Team dinners and client lunches with a set menu planned in advance.",
     },
   ] satisfies Occasion[],
-  spacesHeading: "Our spaces",
   spaces: [
     {
       // TODO_OWNER: confirm the name of this space.
@@ -406,6 +405,7 @@ export const celebrations = {
 
 export const booking = {
   heading: "How booking works",
+  stepLabel: (n: number) => `Step ${n}: `,
   steps: [
     {
       title: "Send an enquiry",
