@@ -1,13 +1,28 @@
 import { Booking } from "@/components/sections/Booking";
 import { Celebrations } from "@/components/sections/Celebrations";
+import { Chef } from "@/components/sections/Chef";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Instagram } from "@/components/sections/Instagram";
+import { Kitchen } from "@/components/sections/Kitchen";
+import { Reviews } from "@/components/sections/Reviews";
 import { SpacesGallery } from "@/components/sections/SpacesGallery";
 import { Story } from "@/components/sections/Story";
 import { StarDivider } from "@/components/ui/StarDivider";
+import { reviews } from "@/content/site";
+
+// Night sections that meet are separated by the star divider.
+function NightDivider() {
+  return (
+    <div aria-hidden="true" className="bg-night-walnut">
+      <StarDivider />
+    </div>
+  );
+}
 
 export default function Home() {
+  const hasReviews = reviews.length > 0;
   return (
     <>
       <Header />
@@ -17,14 +32,16 @@ export default function Home() {
         <Celebrations />
         <Booking />
         <SpacesGallery />
-        {/* Filled in by the next phases. The anchors already work for the nav links. */}
-        <section id="kitchen" />
-        <section id="chef" />
+        <Kitchen />
+        <Chef />
+        <Reviews />
+        {hasReviews ? <NightDivider /> : null}
+        <Instagram compactTop={!hasReviews} />
+        <NightDivider />
+        {/* Filled in by the next phase. The anchor already works for the nav links. */}
         <section id="visit" />
       </main>
-      <div className="bg-night-walnut pt-4">
-        <StarDivider />
-      </div>
+      <NightDivider />
       <Footer />
     </>
   );
