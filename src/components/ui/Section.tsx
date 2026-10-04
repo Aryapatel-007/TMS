@@ -29,8 +29,11 @@ export function Section({
       id={id}
       aria-labelledby={labelledBy}
       aria-label={label}
+      // focusable so in-page links can move keyboard focus to the section
+      tabIndex={id ? -1 : undefined}
       className={clsx(
         `theme-${theme}`,
+        "focus:outline-none",
         "bg-(--bg) py-section text-(--fg)",
         theme === "parchment" && "paper-grain",
         className,

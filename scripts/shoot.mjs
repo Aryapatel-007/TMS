@@ -13,6 +13,7 @@
 //   --wait <ms>       wait before the screenshot (default 600)
 //   --click <css>     click this element before the screenshot
 //   --session-played  pretend the hero sequence already played this session
+//   --until <event>   load event to wait for: load, domcontentloaded or networkidle (default)
 //
 // Needs a running server. Set BASE_URL (default http://localhost:3100).
 
@@ -66,7 +67,7 @@ for (const viewport of sizes) {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
-  await page.goto(base + pagePath, { waitUntil: "networkidle" });
+  await page.goto(base + pagePath, { waitUntil: opts.until ?? "networkidle" });
   if (opts.scroll) await page.locator(opts.scroll).first().scrollIntoViewIfNeeded();
   if (opts.click) await page.locator(opts.click).first().click();
   if (opts.full) {

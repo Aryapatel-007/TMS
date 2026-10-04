@@ -196,3 +196,103 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Hero opening sequence, about 2.4 seconds. html[data-intro="play"]  */
+/* is set before first paint by the inline script in layout.tsx       */
+/* (src/lib/intro.ts). Without it, everything shows its final state.  */
+/* ------------------------------------------------------------------ */
+
+@keyframes hero-beam-sweep {
+  from {
+    transform: translateX(-170%);
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-beam-settle {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes hero-lockup-reveal {
+  from {
+    clip-path: inset(-20% 100% -20% 0%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    clip-path: inset(-20% 0% -20% 0%);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* a. darkness, b. the beam sweeps in and reveals the lockup as it passes */
+  html[data-intro="play"] [data-hero="beam"] {
+    animation:
+      hero-beam-sweep 1.25s var(--ease-candle) 0.1s both,
+      hero-beam-settle 0.8s ease-in-out 1.3s forwards;
+  }
+
+  html[data-intro="play"] [data-hero="lockup"] {
+    animation: hero-lockup-reveal 0.95s ease-out 0.4s both;
+  }
+
+  /* c. the room fades up from darkness while the beam settles */
+  html[data-intro="play"] [data-hero="cover"] {
+    opacity: 1;
+    animation: hero-fade-out 1s ease-in-out 1.1s both;
+  }
+
+  /* d. the lines and buttons appear together, with the header */
+  html[data-intro="play"] [data-hero="reveal"] {
+    animation: hero-rise-in 0.7s var(--ease-candle) 1.7s both;
+  }
+
+  html[data-intro="play"] [data-site-header] {
+    animation: hero-fade-in 0.7s ease-out 1.8s both;
+  }
+}

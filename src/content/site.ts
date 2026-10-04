@@ -634,7 +634,7 @@ export const visit = {
   storefrontCaption: "Look for the copper sign on the ground floor of Siddhraj Z Square.",
   detailsHeading: "Find us",
   addressLabel: "Address",
-  phoneLabel: "Call",
+  phoneLabel: "Phone",
   hoursLabel: "Hours",
   directions: { label: "Get directions" },
   callLine: { lead: "Prefer to talk?", label: "Call +91 90993 22446", href: business.phones[0].href },
@@ -698,7 +698,7 @@ export const footer = {
   copyright: (year: number) => `© ${year} The Masala Secrets. All rights reserved.`,
   credit: { label: "Website by Arya Patel" },
   navLabel: "Footer",
-  instagramLabel: "Instagram",
+  instagramLabel: "on Instagram",
 };
 
 /* ------------------------------------------------------------------ */
