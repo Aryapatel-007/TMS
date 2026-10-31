@@ -28,7 +28,8 @@ BASE_W, BASE_H = 1189, 2576
 # raw file -> (output name, (x0, y0, x1, y1) in 1189 x 2576 space, kind)
 # kind "site" goes to public/images as webp, kind "ref" goes to assets/refs as png
 CROPS = {
-    # interiors and exterior
+    # banquet venue: interiors and exterior
+    # The site shows the banquet only, so food and chef photos are not cropped.
     "1000133658.jpg": ("hero-angel-hall",              (0, 530, 1176, 2088), "site"),
     "1000133701.jpg": ("space-brick-arch-long-tables", (0, 108, 1189, 2190), "site"),
     "1000133705.jpg": ("space-private-curtain-table",  (0, 108, 1189, 2190), "site"),
@@ -38,28 +39,7 @@ CROPS = {
     "1000133656.jpg": ("space-chandelier-ceiling",     (0, 800, 1189, 1385), "site"),
     "1000133660.jpg": ("space-window-dining",          (600, 400, 1056, 1145), "site"),
     "1000133697.jpg": ("exterior-storefront",          (0, 280, 1189, 2140), "site"),
-    "1000133699.jpg": ("menu-cover-lockup",            (0, 900, 1189, 2120), "site"),
-    "1000133638.jpg": ("story-street-illustration",    (0, 1610, 1189, 2270), "site"),
-    # chef
-    "1000133689.jpg": ("chef-arpit-portrait",          (0, 440, 1189, 1195), "site"),
-    "1000133715.jpg": ("chef-arpit-at-work",           (0, 875, 980, 2130), "site"),
-    # dishes and drinks
-    "1000133691.jpg": ("dish-lucknowi-biryani",        (160, 830, 990, 1660), "site"),
-    "1000133693.jpg": ("dish-kashmiri-kofta-curry",    (170, 805, 1040, 1675), "site"),
-    "1000133696.jpg": ("dish-goan-cashew-curry",       (165, 805, 1035, 1675), "site"),
-    "1000133719.jpg": ("dish-crystal-dumpling-penang", (0, 1080, 1189, 2130), "site"),
-    "1000133717.jpg": ("dish-noodle-dumpling-soup",    (0, 1150, 1189, 2130), "site"),
-    "1000133650.jpg": ("dish-tomato-noodle-soup",      (0, 720, 1189, 1830), "site"),
-    "1000133646.jpg": ("dish-gochujang-bowl",          (70, 950, 1090, 1870), "site"),
-    "1000133640.jpg": ("dish-baked-pasta",             (180, 990, 1189, 2050), "site"),
-    "1000133642.jpg": ("dish-paneer-handi",            (0, 625, 1189, 1900), "site"),
-    "1000133644.jpg": ("dish-dal-khichdi",             (0, 800, 1189, 1700), "site"),
-    "1000133723.jpg": ("dish-spring-roll-shots",       (0, 810, 1189, 1920), "site"),
     "1000133721.jpg": ("feast-see-you-at-the-table",   (0, 1300, 1189, 2230), "site"),
-    "1000133648.jpg": ("drink-berry-mocktail",         (0, 930, 1189, 2020), "site"),
-    "1000133709.jpg": ("dessert-chocolate-caramel",    (0, 1115, 1189, 2060), "site"),
-    "1000133711.jpg": ("dessert-blueberry-cheesecake", (0, 1105, 1189, 2060), "site"),
-    "1000133713.jpg": ("dessert-mango-cheesecake",     (0, 1095, 1189, 2060), "site"),
 }
 
 # Extra reference crops (one raw file can produce more than one output)

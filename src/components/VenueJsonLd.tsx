@@ -2,12 +2,12 @@ import { business, images, siteUrl } from "@/content/site";
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-// schema.org Restaurant data for search engines.
-export function RestaurantJsonLd() {
+// schema.org data for search engines, describing the banquet venue.
+export function VenueJsonLd() {
   const a = business.address;
   const data = {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": ["EventVenue", "LocalBusiness"],
     name: business.name,
     url: siteUrl,
     image: [`${siteUrl}${images.heroAngelHall.src}`, `${siteUrl}${images.storefront.src}`],
@@ -29,9 +29,6 @@ export function RestaurantJsonLd() {
       opens: slot.opens,
       closes: slot.closes,
     })),
-    servesCuisine: business.cuisines,
-    priceRange: business.priceRange,
-    acceptsReservations: true,
     sameAs: [business.instagram.url],
   };
   return (

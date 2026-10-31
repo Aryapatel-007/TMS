@@ -8,6 +8,11 @@ Work through the phases in PROMPTS.md one at a time, and do only the phase you a
 
 ## 1. What we are building
 
+> **Scope change (31 Oct 2026): banquet only.** The owner asked for the website to showcase only the banquet.
+> The Story, Kitchen, Chef, Reviews and Instagram sections, and every food and chef photo, were removed.
+> The page is now: Hero, Celebrations (occasions, the two spaces, banquet menu line), How booking works, Inside the venue (gallery), Plan your celebration (enquiry form, details, map), Footer.
+> Where older parts of this file mention the kitchen, chef, dishes, story or Instagram strip, treat them as history, not instructions.
+
 A one-page marketing website for **The Masala Secrets (TMS)**, a pure vegetarian fine-dine restaurant and banquet venue in Kudasan, Gandhinagar, Gujarat, India.
 
 - **Primary job:** get banquet and private event enquiries (birthdays, anniversaries, engagement and ring ceremonies, family get-togethers, kitty parties, corporate lunches and dinners).

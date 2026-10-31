@@ -42,5 +42,4 @@ export function buildEnquiryMessage(e: Enquiry): string {
 }
 
 export const enquiryLink = (e: Enquiry) => whatsappLink(buildEnquiryMessage(e));
-export const menuRequestLink = () => whatsappLink(m.menuRequest);
 export const greetingLink = () => whatsappLink(m.floating);

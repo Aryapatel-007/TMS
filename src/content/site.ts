@@ -26,17 +26,6 @@ export type Space = {
   image: SiteImage;
 };
 
-export type Dish = {
-  name: string;
-  description: string;
-  image: SiteImage;
-  shape: "circle" | "rect";
-};
-
-export type DishGroup = { title: string; dishes: Dish[] };
-
-export type Review = { quote: string; name: string; source: string };
-
 /* ------------------------------------------------------------------ */
 /* Settings                                                           */
 /* ------------------------------------------------------------------ */
@@ -54,7 +43,6 @@ export const siteUrl = "https://themasalasecrets.in";
 export const business = {
   name: "The Masala Secrets",
   shortName: "TMS",
-  instagramLine: "TMS Global Kitchen",
   address: {
     street: "Ground Floor, West Wing, Siddhraj Z Square",
     road: "Podar International School Road",
@@ -99,12 +87,6 @@ export const business = {
     directions: "https://www.google.com/maps/dir/?api=1&destination=23.1756896,72.6294501",
     title: "Map showing The Masala Secrets at Siddhraj Z Square, Kudasan, Gandhinagar",
   },
-  headChef: "Chef Arpit",
-  // TODO_OWNER: confirm the rating.
-  rating: "Rated 4.5 by our guests",
-  cuisines: ["Indian", "Asian", "Continental", "Vegetarian"],
-  // TODO_OWNER: confirm the price band shown to search engines (₹₹₹ means mid to high).
-  priceRange: "₹₹₹",
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -166,125 +148,11 @@ export const images = {
     height: 924,
     alt: "The copper TMS sign above the glass doors of the restaurant at Siddhraj Z Square",
   },
-  menuCover: {
-    src: "/images/menu-cover-lockup.webp",
-    width: 590,
-    height: 606,
-    alt: "The Masala Secrets menu cover, lit by a beam of light",
-  },
-  streetIllustration: {
-    src: "/images/story-street-illustration.webp",
-    width: 590,
-    height: 328,
-    alt: "A line drawing of an old town street with cobblestones, from our printed menu",
-  },
-  chefPortrait: {
-    src: "/images/chef-arpit-portrait.webp",
-    width: 590,
-    height: 375,
-    alt: "Chef Arpit in a black chef's coat and tall white hat, plating a dish",
-  },
-  chefAtWork: {
-    src: "/images/chef-arpit-at-work.webp",
-    width: 486,
-    height: 623,
-    alt: "Chef Arpit in a navy chef's coat with an Indian flag on the collar, cooking in the kitchen",
-  },
-  lucknowiBiryani: {
-    src: "/images/dish-lucknowi-biryani.webp",
-    width: 412,
-    height: 413,
-    alt: "Lucknowi biryani topped with fried onions, cashews and fresh mint, seen from above",
-  },
-  kashmiriKofta: {
-    src: "/images/dish-kashmiri-kofta-curry.webp",
-    width: 432,
-    height: 432,
-    alt: "Golden koftas in a creamy orange Kashmiri gravy, seen from above",
-  },
-  goanCashew: {
-    src: "/images/dish-goan-cashew-curry.webp",
-    width: 432,
-    height: 432,
-    alt: "Goan cashew curry with whole cashews and a flower garnish, seen from above",
-  },
-  crystalDumpling: {
-    src: "/images/dish-crystal-dumpling-penang.webp",
-    width: 590,
-    height: 521,
-    alt: "Translucent vegetable dumplings in red Penang curry on a terrazzo plate",
-  },
-  noodleDumplingSoup: {
-    src: "/images/dish-noodle-dumpling-soup.webp",
-    width: 590,
-    height: 487,
-    alt: "Noodle and dumpling soup in a white cup and saucer",
-  },
-  gochujangBowl: {
-    src: "/images/dish-gochujang-bowl.webp",
-    width: 506,
-    height: 457,
-    alt: "Paneer in a red gochujang glaze with noodles, greens and cabbage in a dark bowl",
-  },
-  springRollShots: {
-    src: "/images/dish-spring-roll-shots.webp",
-    width: 590,
-    height: 552,
-    alt: "Spring rolls standing in shot glasses of red dip on a wooden board",
-  },
-  bakedPasta: {
-    src: "/images/dish-baked-pasta.webp",
-    width: 501,
-    height: 527,
-    alt: "Golden baked pasta in an oval dish, topped with a cherry tomato and herbs",
-  },
-  dalKhichdi: {
-    src: "/images/dish-dal-khichdi.webp",
-    width: 590,
-    height: 447,
-    alt: "Dal khichdi in a silver bowl beside a chilled drink, with a red curtain behind",
-  },
-  paneerHandi: {
-    src: "/images/dish-paneer-handi.webp",
-    width: 590,
-    height: 633,
-    alt: "A paneer curry in a tin-lined handi",
-  },
-  tomatoNoodleSoup: {
-    src: "/images/dish-tomato-noodle-soup.webp",
-    width: 590,
-    height: 551,
-    alt: "Soup poured from a glass jug into a glass teacup",
-  },
   feast: {
     src: "/images/feast-see-you-at-the-table.webp",
     width: 590,
     height: 462,
     alt: "A basket of naan and bowls of curry on a table beside a navy velvet booth",
-  },
-  berryMocktail: {
-    src: "/images/drink-berry-mocktail.webp",
-    width: 590,
-    height: 542,
-    alt: "A berry mocktail with citrus and mint in a cut-glass goblet",
-  },
-  chocolateCaramel: {
-    src: "/images/dessert-chocolate-caramel.webp",
-    width: 590,
-    height: 470,
-    alt: "A chocolate dessert being dipped into warm caramel sauce",
-  },
-  blueberryCheesecake: {
-    src: "/images/dessert-blueberry-cheesecake.webp",
-    width: 590,
-    height: 475,
-    alt: "A slice of blueberry cheesecake under a glossy blueberry compote",
-  },
-  mangoCheesecake: {
-    src: "/images/dessert-mango-cheesecake.webp",
-    width: 590,
-    height: 480,
-    alt: "A slice of mango cheesecake finished with pistachio and rose petals",
   },
 } satisfies Record<string, SiteImage>;
 
@@ -295,10 +163,9 @@ export const images = {
 export const nav = {
   links: [
     { label: "Celebrations", href: "#celebrations" },
-    { label: "Spaces", href: "#spaces" },
-    { label: "Kitchen", href: "#kitchen" },
-    { label: "Chef", href: "#chef" },
-    { label: "Visit", href: "#visit" },
+    { label: "How it works", href: "#booking" },
+    { label: "The venue", href: "#spaces" },
+    { label: "Enquire", href: "#visit" },
   ],
   cta: { label: "Plan an event", href: "#visit" },
   homeLabel: "TMS, The Masala Secrets, back to top",
@@ -313,30 +180,11 @@ export const nav = {
 
 export const hero = {
   lockupName: "The Masala Secrets",
-  line1: "Global kitchen and banquet in Kudasan, Gandhinagar",
+  line1: "Banquet and private celebrations in Kudasan, Gandhinagar",
   line2: "A space made for meaningful moments.",
   primary: { label: "Plan an event", href: "#visit" },
-  secondary: { label: "Call to reserve", href: business.phones[0].href },
+  secondary: { label: "Call us", href: business.phones[0].href },
   note: "Pure vegetarian. Jain preparations on request.",
-};
-
-/* ------------------------------------------------------------------ */
-/* Story                                                              */
-/* ------------------------------------------------------------------ */
-
-export const story = {
-  heading: "Our story",
-  paragraphs: [
-    "It began with a simple idea. A place where the heritage of Indian cooking could sit at the same table as the flavours of the world.",
-    "So our kitchen cooks a Lucknowi biryani and a Penang curry with the same care, and every plate mixes the familiar with something unexpected.",
-    "The food is only half of it. The Masala Secrets is a place for long dinners, family celebrations and conversations that run late, under cherub lamps and a ceiling of flowers.",
-  ],
-  facts: [
-    "Pure vegetarian, with Jain preparations",
-    business.rating, // TODO_OWNER: confirm the rating.
-    "Ground floor, Siddhraj Z Square, Kudasan",
-  ],
-  illustration: images.streetIllustration,
 };
 
 /* ------------------------------------------------------------------ */
@@ -396,8 +244,8 @@ export const celebrations = {
     },
   ] satisfies Space[],
   capacityLine: (n: number) => `Seats up to ${n} guests`,
-  feastImages: [images.feast, images.springRollShots],
-  feastLine: "Menus are planned with you for every celebration. Packages on request.",
+  feastImage: images.feast,
+  feastLine: "Vegetarian banquet menus, with Jain preparations, planned with you for every celebration. Packages on request.",
   cta: { label: "Plan an event", href: "#visit" },
 };
 
@@ -433,7 +281,7 @@ export const booking = {
 /* ------------------------------------------------------------------ */
 
 export const gallery = {
-  heading: "Inside The Masala Secrets",
+  heading: "Inside the venue",
   intro: "Every corner of the room has a story. Here are a few.",
   label: "Photos of the room",
   previous: "Previous photo",
@@ -443,7 +291,7 @@ export const gallery = {
       image: images.angelFountain,
       caption: "A bronze angel stands over the fountain at the centre of the room.",
     },
-    { image: images.cherubLamp, caption: "Cherubs carry the lamps above the tables." },
+    { image: images.cherubLamp, caption: "Cherubs carry the lamps above every table." },
     {
       image: images.rosePainting,
       caption: "Oil paintings in carved frames hang on the brick walls.",
@@ -452,176 +300,7 @@ export const gallery = {
       image: images.chandelierCeiling,
       caption: "Wrought-iron chandeliers beneath a ceiling of white flowers.",
     },
-    { image: images.windowDining, caption: "Window tables framed by red velvet curtains." },
-  ],
-};
-
-/* ------------------------------------------------------------------ */
-/* Kitchen                                                            */
-/* ------------------------------------------------------------------ */
-
-export const kitchen = {
-  heading: "A global kitchen",
-  intro:
-    "Everything we cook is vegetarian, and Jain preparations are available on request. The menu moves between regional Indian classics, Asian favourites and continental comfort food.",
-  groups: [
-    {
-      title: "From India's regions",
-      dishes: [
-        {
-          name: "Lucknowi Biryani",
-          description:
-            "Fragrant rice layered with vegetables and whole spices, finished with fried onions, cashews and fresh mint.",
-          image: images.lucknowiBiryani,
-          shape: "circle",
-        },
-        {
-          name: "Kashmiri Kofta Curry",
-          description: "Golden koftas in a creamy, gently spiced Kashmiri gravy.",
-          image: images.kashmiriKofta,
-          shape: "circle",
-        },
-        {
-          name: "Goan Cashew Curry",
-          description: "Creamy and nutty, with the warm spices of the Goan coast.",
-          image: images.goanCashew,
-          shape: "circle",
-        },
-        {
-          name: "Dal Khichdi",
-          description: "Slow-cooked rice and lentils. Simple, warm and comforting.",
-          image: images.dalKhichdi,
-          shape: "rect",
-        },
-      ],
-    },
-    {
-      title: "From across Asia",
-      dishes: [
-        {
-          name: "Veggie Crystal Dumpling in Penang Curry",
-          description: "Translucent vegetable dumplings in a rich Malaysian Penang curry.",
-          image: images.crystalDumpling,
-          shape: "rect",
-        },
-        {
-          name: "Noodle Dumpling Soup",
-          description: "A warm, spiced broth with noodles and soft dumplings.",
-          image: images.noodleDumplingSoup,
-          shape: "rect",
-        },
-        {
-          // TODO_OWNER: confirm the exact menu name.
-          name: "Gochujang Bowl",
-          description:
-            "Paneer in a sweet and spicy Korean chilli glaze, with noodles, greens and crunchy cabbage.",
-          image: images.gochujangBowl,
-          shape: "rect",
-        },
-      ],
-    },
-    {
-      title: "Small plates and sips",
-      dishes: [
-        {
-          // TODO_OWNER: confirm the exact menu name.
-          name: "Spring Roll Shots",
-          description: "Crisp spring rolls served standing in shot glasses of spicy dip.",
-          image: images.springRollShots,
-          shape: "rect",
-        },
-        {
-          // TODO_OWNER: confirm the exact menu name.
-          name: "Baked Pasta",
-          description: "Creamy, cheesy and golden from the oven.",
-          image: images.bakedPasta,
-          shape: "rect",
-        },
-        {
-          // TODO_OWNER: confirm the exact menu name.
-          name: "Berry Mocktail",
-          description: "Berries, citrus and fresh mint over ice.",
-          image: images.berryMocktail,
-          shape: "rect",
-        },
-      ],
-    },
-    {
-      title: "Sweet endings",
-      dishes: [
-        {
-          name: "Blueberry Cheesecake",
-          description: "Smooth cheesecake under a glossy blueberry compote.",
-          image: images.blueberryCheesecake,
-          shape: "rect",
-        },
-        {
-          name: "Mango Cheesecake",
-          description: "Finished with pistachio and rose petals.",
-          image: images.mangoCheesecake,
-          shape: "rect",
-        },
-        {
-          // TODO_OWNER: confirm the exact menu name.
-          name: "Chocolate Caramel Dessert",
-          description: "Layers of chocolate with a warm caramel sauce.",
-          image: images.chocolateCaramel,
-          shape: "rect",
-        },
-      ],
-    },
-  ] satisfies DishGroup[],
-  closing: "Our menu changes with the seasons. Ask us for the current menu or a celebration menu.",
-  cta: { label: "Ask for the menu" },
-};
-
-/* ------------------------------------------------------------------ */
-/* Chef                                                               */
-/* ------------------------------------------------------------------ */
-
-export const chef = {
-  name: "Chef Arpit",
-  role: "Head chef",
-  quote: "The hands behind the flavours. The mind behind the menu.",
-  // TODO_OWNER: replace with Chef Arpit's real background.
-  bio: "Chef Arpit leads the kitchen at The Masala Secrets. His menu moves from Lucknow and Kashmir to Goa and Penang, and every plate leaves the kitchen finished by hand.",
-  portrait: images.chefPortrait,
-  atWork: images.chefAtWork,
-};
-
-/* ------------------------------------------------------------------ */
-/* Reviews                                                            */
-/* ------------------------------------------------------------------ */
-
-// The reviews section renders only when this array has items. Keep it empty
-// until the owner shares real reviews. Expected shape:
-// { quote: "The food and the room were perfect for our anniversary.", name: "Guest name", source: "Google" }
-// TODO_OWNER: share two or three real guest reviews, with permission to use their names.
-export const reviews: Review[] = [];
-
-export const reviewsSection = {
-  heading: "What our guests say",
-  googleLine: "Read what our guests say on Google",
-  // TODO_OWNER: Google reviews link. Until then this opens a Google Maps search for the restaurant.
-  googleUrl: "https://www.google.com/maps/search/?api=1&query=The+Masala+Secrets+Kudasan+Gandhinagar",
-};
-
-/* ------------------------------------------------------------------ */
-/* Instagram                                                          */
-/* ------------------------------------------------------------------ */
-
-export const instagram = {
-  line: "Follow @the_masala_secrets for new dishes and evenings at TMS.",
-  handle: business.instagram.handle,
-  url: business.instagram.url,
-  tileLabel: "Open The Masala Secrets on Instagram",
-  tiles: [
-    images.berryMocktail,
-    images.tomatoNoodleSoup,
-    images.paneerHandi,
-    images.dalKhichdi,
-    images.chocolateCaramel,
-    images.cherubLamp,
+    { image: images.windowDining, caption: "Quieter corners framed by red velvet curtains." },
   ],
 };
 
@@ -630,14 +309,14 @@ export const instagram = {
 /* ------------------------------------------------------------------ */
 
 export const visit = {
-  heading: "Plan your visit",
-  intro: "Tell us about your celebration, or call to reserve a table.",
+  heading: "Plan your celebration",
+  intro: "Tell us about your event, or call us and we will plan it with you.",
   storefront: images.storefront,
   storefrontCaption: "Look for the copper sign on the ground floor of Siddhraj Z Square.",
   detailsHeading: "Find us",
   addressLabel: "Address",
   phoneLabel: "Phone",
-  hoursLabel: "Hours",
+  hoursLabel: "Visiting hours",
   directions: { label: "Get directions" },
   instagramSuffix: "on Instagram",
   callLine: { lead: "Prefer to talk?", label: "Call +91 90993 22446", href: business.phones[0].href },
@@ -656,7 +335,7 @@ export const enquiryForm = {
     time: { label: "Time", options: ["Lunch", "Dinner"] },
     message: { label: "Anything else we should know?", optional: "Optional" },
   },
-  extraOccasions: ["Table reservation", "Other"],
+  extraOccasions: ["Other"],
   // TODO_OWNER: what is the largest group you can host? Used as the form maximum.
   maxGuests: 200,
   errors: {
@@ -686,8 +365,7 @@ export const enquiryForm = {
 export const whatsappMessages = {
   enquiryGreeting: "Hello The Masala Secrets,",
   enquiryIntro: "I would like to enquire about an event.",
-  menuRequest: "Hello The Masala Secrets, could you please share your current menu?",
-  floating: "Hello The Masala Secrets, I have a question.",
+  floating: "Hello The Masala Secrets, I have a question about hosting an event.",
   floatingLabel: "Chat on WhatsApp",
   noMessage: "None",
 };
@@ -709,9 +387,9 @@ export const footer = {
 /* ------------------------------------------------------------------ */
 
 export const meta = {
-  title: "The Masala Secrets | Global Kitchen and Banquet in Kudasan, Gandhinagar",
+  title: "The Masala Secrets | Banquet and Private Celebrations in Kudasan, Gandhinagar",
   description:
-    "Pure vegetarian global kitchen and banquet in Kudasan, Gandhinagar. Plan birthdays, anniversaries, ring ceremonies and corporate dinners at The Masala Secrets.",
+    "A pure vegetarian banquet venue in Kudasan, Gandhinagar. Host birthdays, anniversaries, ring ceremonies, kitty parties and corporate dinners at The Masala Secrets.",
   ogPlace: "Kudasan, Gandhinagar",
   locale: "en_IN",
 };

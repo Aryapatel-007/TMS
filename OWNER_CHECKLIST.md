@@ -21,34 +21,20 @@ When the answers come back, use the "Owner sent the missing details" prompt in `
 7. How many guests can The Curtain Room seat?
 8. What is the largest group you can host at one time? (The enquiry form lets people choose up to 200 guests for now.)
 
-## Menu names
+## Banquet menus
 
-9. What is the exact menu name of the paneer bowl in red gochujang glaze with noodles? We call it "Gochujang Bowl".
-10. What is the exact name of the spring rolls served in shot glasses? We call them "Spring Roll Shots".
-11. What is the exact name of the baked pasta? We call it "Baked Pasta".
-12. What is the exact name of the berry mocktail in the cut-glass goblet? We call it "Berry Mocktail".
-13. What is the exact name of the chocolate dessert with caramel sauce? We call it "Chocolate Caramel Dessert".
-14. Is "₹₹₹" (mid to high) the right price band to show on Google?
-
-## Chef
-
-15. Could you share two or three lines about Chef Arpit: where he trained, where he worked before, and what he loves to cook? We will replace the placeholder text on the website.
-
-## Reviews
-
-16. Is "Rated 4.5 by our guests" correct? Where is the rating from (Google, Zomato)?
-17. Could you send the link to your Google reviews page?
-18. Could you share two or three guest reviews you like, and confirm we may show the guest's first name?
+9. Do you have set banquet packages (for example, per plate prices or a few menu tiers)? If yes, could you share them so we can show them on the website, or should it stay "Packages on request"?
+10. Could you send a few photos of the banquet set up for a real event (decorated tables, a birthday or ring ceremony setup)? These would replace the restaurant photos.
 
 ## Domain
 
-19. Do you already own a website address (for example themasalasecrets.in)? If not, which one would you like us to buy?
+11. Do you already own a website address (for example themasalasecrets.in)? If not, which one would you like us to buy?
 
 ## Credit
 
-20. Is it all right to show "Website by Arya Patel" in small text at the bottom of the website?
+12. Is it all right to show "Website by Arya Patel" in small text at the bottom of the website?
 
 ## Photos and logo
 
-21. Could you send the original logo file (AI, SVG, PDF or a large PNG)? The website uses a redrawn version for now.
-22. Could you send the original photos as files, not as WhatsApp photos? On WhatsApp, attach them as a "Document" so they are not compressed. The website currently uses compressed copies at half size, which look soft on large screens.
+13. Could you send the original logo file (AI, SVG, PDF or a large PNG)? The website uses a redrawn version for now.
+14. Could you send the original photos as files, not as WhatsApp photos? On WhatsApp, attach them as a "Document" so they are not compressed. The website currently uses compressed copies at half size, which look soft on large screens.
